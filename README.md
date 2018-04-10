@@ -1,5 +1,5 @@
 # ChatEngine
-Short description and motivation.
+Chat Engine for real time chat between users
 
 ## Usage
 How to use my plugin.
@@ -19,6 +19,10 @@ $ bundle
 Or install it yourself as:
 ```bash
 $ gem install chat_engine
+```
+then run
+```bash
+$ rails g chat_engine:install
 ```
 
 ## Contributing
