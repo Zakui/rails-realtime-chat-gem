@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat engine</title>
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+  <%= stylesheet_link_tag    "chat_engine/application", media: "all" %>
+  <%= javascript_include_tag "chat_engine/application" %>
+  
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

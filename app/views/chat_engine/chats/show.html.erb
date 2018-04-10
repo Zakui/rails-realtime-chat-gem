@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Chat Users</h2> <br>
+
+<% @chat.chat_subscribers.each do |user| %>
+    <%= user.subscriber.email %><br>
+<% end %>
+<hr>
+
+
+
+<h2>Messages</h2>
+<!--<div id="">-->
+<div id="messages" data-chat_id=<%= @chat.id %>>
+    <%= render @messages %>
+</div>
+<%= render 'chat_engine/messages/form' %>
+
+<%= link_to 'Back', chats_path %>
