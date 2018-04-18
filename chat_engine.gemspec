@@ -14,11 +14,14 @@ Gem::Specification.new do |s|
   # s.description = "TODO: Description of ChatEngine."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,db,lib,public}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", ">= 5.0"
 
-  # s.add_development_dependency "sqlite3"
+  s.add_development_dependency "sqlite3"
   s.add_development_dependency "sidekiq"
   s.add_development_dependency "redis"
+  s.add_dependency "toastr-rails"
+  s.add_dependency "paperclip"
+  s.add_dependency "cancancan"
 end

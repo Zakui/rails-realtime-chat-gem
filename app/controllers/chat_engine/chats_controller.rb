@@ -3,7 +3,7 @@ require_dependency "chat_engine/application_controller"
 module ChatEngine
   class ChatsController < ApplicationController
     before_action :set_chat, only: [:show, :edit, :update, :destroy]
-
+    authorize_resource
     # GET /chats
     def index
       @chats = Chat.all
@@ -13,16 +13,26 @@ module ChatEngine
     def show
       @messages = @chat.messages.order('created_at ASC')
       @message = Message.new
+      @messages.where.not(sender: current_user).update_all(read: true)
+    end
+    
+    def inbox
+      all_messages = []
+      current_user.chats.includes(:messages).each do |chat|
+        all_messages << chat.messages.order('created_at ASC').last
+      end
+      # if 
+      @chats = all_messages.compact.sort_by{|a| a.created_at }.reverse.map(&:chat)
     end
 
     # GET /chats/new
-    def new
-      @chat = Chat.new
-    end
+    # def new
+    #   @chat = Chat.new
+    # end
 
-    # GET /chats/1/edit
-    def edit
-    end
+    # # GET /chats/1/edit
+    # def edit
+    # end
 
     # POST /chats
     def create
@@ -52,13 +62,13 @@ module ChatEngine
     end
 
     # PATCH/PUT /chats/1
-    def update
-      if @chat.update(chat_params)
-        redirect_to @chat, notice: 'Chat was successfully updated.'
-      else
-        render :edit
-      end
-    end
+    # def update
+    #   if @chat.update(chat_params)
+    #     redirect_to @chat, notice: 'Chat was successfully updated.'
+    #   else
+    #     render :edit
+    #   end
+    # end
 
     # DELETE /chats/1
     def destroy

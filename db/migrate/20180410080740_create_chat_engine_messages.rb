@@ -4,6 +4,7 @@ class CreateChatEngineMessages < ActiveRecord::Migration[5.1]
       t.references :sender,polymorphic: true
       t.text :content
       t.integer :chat_id
+      t.boolean :read, default: false
       t.timestamps
     end
   end

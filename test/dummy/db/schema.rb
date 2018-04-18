@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410080740) do
+ActiveRecord::Schema.define(version: 20180414154842) do
 
   create_table "chat_engine_chat_subscribers", force: :cascade do |t|
     t.string "subscriber_type"
@@ -30,8 +30,13 @@ ActiveRecord::Schema.define(version: 20180410080740) do
     t.integer "sender_id"
     t.text "content"
     t.integer "chat_id"
+    t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "document_file_name"
+    t.string "document_content_type"
+    t.integer "document_file_size"
+    t.datetime "document_updated_at"
     t.index ["sender_type", "sender_id"], name: "index_chat_engine_messages_on_sender_type_and_sender_id"
   end
 
@@ -48,6 +53,7 @@ ActiveRecord::Schema.define(version: 20180410080740) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "online", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
+//= require toastr
 //= require cable
 //= require_self
 //= require_tree .

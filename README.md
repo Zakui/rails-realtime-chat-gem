@@ -24,6 +24,18 @@ then run
 ```bash
 $ rails g chat_engine:install
 ```
+for generating channel javascript
+```bash
+$ rails g chat_engine:channels
+```
+after generating channels do the following
+Add toastr to application.css and application.js:
+
+*= require toastr in application.css
+
+//= require toastr in application.js
+
+
 add following association in your user model
 ```bash
   has_many :chat_subscribers, as: :subscriber, class_name: 'ChatEngine::ChatSubscriber'

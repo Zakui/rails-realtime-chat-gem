@@ -27,7 +27,7 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -51,4 +51,21 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  
+  
+  config.action_mailer.default_url_options = { :host => "https://chatengine-a17100262.c9users.io/" }
+  # Paperclip.options[:command_path] = "/usr/local/bin/"
+  
+  config.action_mailer.raise_delivery_errors = true
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address => 'smtpout.secureserver.net',
+    :port      => 80,
+    :user_name => 'test@guidistan.com',
+    :password => 'admin123',
+    :authentication => :plain
+    }
+    
+  
+  
 end

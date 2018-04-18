@@ -11,4 +11,8 @@ class User < ApplicationRecord
   # def chat_with(user_id)
   #   return self.chats.includes(:chat_subscribers).select{|chat| chat.chat_subscribers.pluck(:subscriber_type).include?(user_id) } 
   # end
+  
+  def fullname
+    (User.column_names.include? "name") ? self.name: self.email.split('@')[0]
+  end
 end

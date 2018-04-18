@@ -23,7 +23,7 @@ module ChatEngine
     end
     
     def message_params
-      params.require(:message).permit(:content,:sender_id,:sender_type)
+      params.require(:message).permit(:content,:sender_id,:sender_type,:document)
     end
   end
 end

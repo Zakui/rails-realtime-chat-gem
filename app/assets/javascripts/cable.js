@@ -5,7 +5,6 @@
 //= require_self
 //= require_tree ./channels
 
-alert("outside application");
 (function() {
   this.App || (this.App = {});
 
